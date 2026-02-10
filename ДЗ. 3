@@ -1,0 +1,64 @@
+# Задание 1 
+
+ids = {'user1': [213, 213, 213, 15, 213],
+        'user2': [54, 54, 119, 119, 119],
+        'user3': [213, 98, 98, 35]}
+
+unique_geo = set()
+for geo_list in ids.values():
+    unique_geo.update(geo_list)
+
+print(unique_geo)
+
+
+# Задание 2 
+
+queries = [
+    'смотреть сериалы онлайн',
+    'новости спорта',
+    'афиша кино',
+    'курс доллара',
+    'сериалы этим летом',
+    'курс по питону',
+    'сериалы про спорт',
+]
+
+from collections import Counter
+
+word_counts = [len(query.split()) for query in queries]
+freq = Counter(word_counts)
+total = len(queries)
+
+for num in sorted(freq.keys()):
+    percent = (freq[num] / total) * 100
+    print(f"Поисковых запросов, содержащих {num} слов(а): {percent:.2f}%")
+
+# Задание 3 
+
+results = {
+    'vk': {'revenue': 103, 'cost': 98},
+    'yandex': {'revenue': 179, 'cost': 153},
+    'facebook': {'revenue': 103, 'cost': 110},
+    'adwords': {'revenue': 35, 'cost': 34},
+    'twitter': {'revenue': 11, 'cost': 24},
+}
+
+for key in results:
+    revenue = results[key]['revenue']
+    cost = results[key]['cost']
+    roi = ((revenue / cost) - 1) * 100
+    results[key]['ROI'] = round(roi, 2)
+
+# Чтобы вывести в отсортированном порядке
+sorted_results = {k: results[k] for k in sorted(results)}
+print(sorted_results)
+
+# Задание 4 
+
+stats = {'facebook': 55, 'yandex': 115, 'vk': 120, 'google': 99, 'email': 42, 'ok': 98}
+
+max_channel = max(stats, key=stats.get)
+print(f"Максимальный объем продаж на рекламном канале: {max_channel}")
+
+
+

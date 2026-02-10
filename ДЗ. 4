@@ -1,0 +1,241 @@
+# Задание 1
+
+books = [
+    {'genre': 'поэзия', 'number': '978-5-1000-1234-7', 'title': 'Евгений Онегин', 'author': 'Александр Пушкин'},
+    {'genre': 'фэнтези', 'number': '88006', 'title': 'Властелин колец', 'author': 'Джон Р. Р. Толкин'},
+    {'genre': 'детектив', 'number': 'D-1122', 'title': 'Безмолвный свидетель', 'author': 'Агата Кристи'}
+]
+
+directories = {
+    '1': ['978-5-1000-1234-7', '88006'],
+    '2': ['D-1122'],
+    '3': []
+}
+
+def find_book_info(book_number):
+    for book in books:
+        if book['number'] == book_number:
+            return book['title'], book['author']
+    return None
+
+def main():
+    while True:
+        command = input("Введите команду:\n")
+        match command:
+            case "book_info":
+                book_number = input("Введите номер книги:\n")
+                info = find_book_info(book_number)
+                if info:
+                    title, author = info
+                    print(f"Название книги: {title}")
+                    print(f"Автор: {author}")
+                else:
+                    print("Книга не найдена в базе")
+            case "q":
+                break
+            case _:
+                print("Неизвестная команда")
+
+if __name__ == "__main__":
+    main()
+
+# Задание 2 
+
+books = [
+    {'genre': 'поэзия', 'number': '978-5-1000-1234-7', 'title': 'Евгений Онегин', 'author': 'Александр Пушкин'},
+    {'genre': 'фэнтези', 'number': '88006', 'title': 'Властелин колец', 'author': 'Джон Р. Р. Толкин'},
+    {'genre': 'детектив', 'number': 'D-1122', 'title': 'Безмолвный свидетель', 'author': 'Агата Кристи'}
+]
+
+directories = {
+    '1': ['978-5-1000-1234-7', '88006'],
+    '2': ['D-1122'],
+    '3': []
+}
+
+def find_book_info(book_number, number_to_book):
+    book = number_to_book.get(book_number)
+    if book:
+        return book['title'], book['author']
+    return None
+
+def find_book_by_title(title, title_to_book):
+    return title_to_book.get(title)
+
+def get_shelf_by_number(number, number_to_shelf):
+    return number_to_shelf.get(number)
+
+def main():
+    number_to_book = {}
+    for book in books:
+        number_to_book.setdefault(book['number'], book)
+    
+    title_to_book = {}
+    for book in books:
+        title_to_book.setdefault(book['title'], book)
+    
+    number_to_shelf = {}
+    for shelf, nums in directories.items():
+        for num in nums:
+            number_to_shelf.setdefault(num, shelf)
+    
+    while True:
+        command = input("Введите команду:\n")
+        match command:
+            case "book_info":
+                book_number = input("Введите номер книги:\n")
+                info = find_book_info(book_number, number_to_book)
+                if info:
+                    title, author = info
+                    print(f"Название книги: {title}")
+                    print(f"Автор: {author}")
+                else:
+                    print("Книга не найдена в базе")
+            case "shelf":
+                book_title = input("Введите название книги:\n")
+                book = find_book_by_title(book_title, title_to_book)
+                if book:
+                    shelf = get_shelf_by_number(book['number'], number_to_shelf)
+                    if shelf:
+                        print(f"Книга хранится на полке: {shelf}")
+                    else:
+                        print("Книга не найдена в базе")
+                else:
+                    print("Книга не найдена в базе")
+            case "q":
+                break
+            case _:
+                print("Неизвестная команда")
+
+if __name__ == "__main__":
+    main()
+
+# Задание 3. 
+
+books = [
+    {'genre': 'поэзия', 'number': '978-5-1000-1234-7', 'title': 'Евгений Онегин', 'author': 'Александр Пушкин'},
+    {'genre': 'фэнтези', 'number': '88006', 'title': 'Властелин колец', 'author': 'Джон Р. Р. Толкин'},
+    {'genre': 'детектив', 'number': 'D-1122', 'title': 'Безмолвный свидетель', 'author': 'Агата Кристи'}
+]
+
+directories = {
+    '1': ['978-5-1000-1234-7', '88006'],
+    '2': ['D-1122'],
+    '3': []
+}
+
+# Функция для нахождения номера полки по номеру книги
+def find_shelf_by_book_number(book_number):
+    # Используем метод setdefault() для предотвращения KeyError
+    for shelf, numbers in directories.items():
+        if book_number in numbers:
+            return shelf
+    return None
+
+# Основная функция программы
+def main():
+    while True:
+        command = input("Введите команду:\n")
+        match command:
+            case "all":  # Команда вывода полной информации обо всех книгах
+                for book in books:
+                    shelf = find_shelf_by_book_number(book["number"])
+                    print(
+                        f"№: {book['number']}, "
+                        f"жанр: {book['genre']}, "
+                        f"название: {book['title']}, "
+                        f"автор: {book['author']}, "
+                        f"полка хранения: {shelf}"
+                    )
+            case "q":  # Выход из программы
+                break
+            case _:  # Обработка неизвестных команд
+                print("Неизвестная команда")
+
+if __name__ == "__main__":
+    main()
+
+# Задание 4.
+
+books = [
+    {'genre': 'поэзия', 'number': '978-5-1000-1234-7', 'title': 'Евгений Онегин', 'author': 'Александр Пушкин'},
+    {'genre': 'фэнтези', 'number': '88006', 'title': 'Властелин колец', 'author': 'Джон Р. Р. Толкин'},
+    {'genre': 'детектив', 'number': 'D-1122', 'title': 'Безмолвный свидетель', 'author': 'Агата Кристи'}
+]
+
+directories = {
+    '1': ['978-5-1000-1234-7', '88006'],
+    '2': ['D-1122'],
+    '3': []
+}
+
+# Функция добавления новой полки
+def add_shelf(shelf_number):
+    global directories
+    if shelf_number not in directories.keys():
+        directories[shelf_number] = []
+        print(f"Полка добавлена. Текущий перечень полок: {list(directories.keys())}.")
+    else:
+        print(f"Такая полка уже существует. Текущий перечень полок: {list(directories.keys())}.")
+
+# Основная функция программы
+def main():
+    while True:
+        command = input("Введите команду:\n")
+        match command:
+            case "add_shelf":  # Добавление новой полки
+                shelf_number = input("Введите номер полки:\n")
+                add_shelf(shelf_number)
+            case "q":  # Завершение работы программы
+                break
+            case _:  # Обработка неизвестных команд
+                print("Неизвестная команда")
+
+if __name__ == "__main__":
+    main()
+
+
+# Задание 5.
+
+books = [
+    {'genre': 'поэзия', 'number': '978-5-1000-1234-7', 'title': 'Евгений Онегин', 'author': 'Александр Пушкин'},
+    {'genre': 'фэнтези', 'number': '88006', 'title': 'Властелин колец', 'author': 'Джон Р. Р. Толкин'},
+    {'genre': 'детектив', 'number': 'D-1122', 'title': 'Безмолвный свидетель', 'author': 'Агата Кристи'}
+]
+
+directories = {
+    '1': ['978-5-1000-1234-7', '88006'],
+    '2': ['D-1122'],
+    '3': []
+}
+
+# Функция удаления пустой полки
+def del_shelf(shelf_number):
+    global directories
+    if shelf_number in directories.keys():
+        if len(directories[shelf_number]) > 0:
+            print(f"На полке есть книги, удалите их перед удалением полки.")
+        else:
+            del directories[shelf_number]
+            print(f"Полка удалена. Текущий перечень полок: {list(directories.keys())}.")
+    else:
+        print(f"Такой полки не существует. Текущий перечень полок: {list(directories.keys())}.")
+
+# Основная функция программы
+def main():
+    while True:
+        command = input("Введите команду:\n")
+        match command:
+            case "del_shelf":  # Удаление полки
+                shelf_number = input("Введите номер полки:\n")
+                del_shelf(shelf_number)
+            case "q":  # Завершение работы программы
+                break
+            case _:  # Обработка неизвестных команд
+                print("Неизвестная команда")
+
+if __name__ == "__main__":
+    main()
+
+
+

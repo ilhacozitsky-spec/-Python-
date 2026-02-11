@@ -1,0 +1,174 @@
+# Задание 1)
+
+phrase_1 = 'Насколько проще было бы писать программы, если бы не заказчики'
+phrase_2 = '640Кб должно хватить для любых задач. Билл Гейтс (по легенде)'
+
+len1 = len(phrase_1)
+len2 = len(phrase_2)
+
+if len1 > len2:
+    print('Фраза 1 длиннее фразы 2')
+elif len2 > len1:
+    print('Фраза 2 длиннее фразы 1')
+else:
+    print('Фразы одинаковой длины')
+
+# Задание 1) Часть (2) 
+
+phrase_1 = '640Кб должно хватить для любых задач. Билл Гейтс (по легенде)'
+phrase_2 = 'Насколько проще было бы писать программы, если бы не заказчики'
+
+len1 = len(phrase_1)
+len2 = len(phrase_2)
+
+if len1 > len2:
+    print('Фраза 1 длиннее фразы 2')
+elif len2 > len1:
+    print('Фраза 2 длиннее фразы 1')
+else:
+    print('Фразы одинаковой длины')
+
+# Задание 1) Часть (3) 
+
+phrase_1 = 'Насколько проще было бы писать программы, если бы не заказчики'
+phrase_2 = 'Насколько проще было бы писать программы, если бы не заказчики'
+
+len1 = len(phrase_1)
+len2 = len(phrase_2)
+
+if len1 > len2:
+    print('Фраза 1 длиннее фразы 2')
+elif len2 > len1:
+    print('Фраза 2 длиннее фразы 1')
+else:
+    print('Фразы равной длины')
+
+# Задание 2)
+
+year = 2020  # можно заменить на любое значение
+
+if (year % 4 == 0 and year % 100 != 0) or (year % 400 == 0):
+    print("Високосный год")
+else:
+    print("Обычный год")
+
+# Задание 2) Часть (2) 
+
+year = 2019
+
+if (year % 4 == 0 and year % 100 != 0) or (year % 400 == 0):
+    print("Високосный год")
+else:
+    print("Обычный год")
+
+# Задание 3)
+
+# Запрашиваем данные у пользователя
+day = int(input("Введите день:\n"))
+month = input("Введите месяц:\n").capitalize()
+
+# Определяем знак зодиака
+if (month == "Март" and day >= 21) or (month == "Апрель" and day <= 19):
+    sign = "Овен"
+elif (month == "Апрель" and day >= 20) or (month == "Май" and day <= 20):
+    sign = "Телец"
+elif (month == "Май" and day >= 21) or (month == "Июнь" and day <= 21):
+    sign = "Близнецы"
+elif (month == "Июнь" and day >= 22) or (month == "Июль" and day <= 22):
+    sign = "Рак"
+elif (month == "Июль" and day >= 23) or (month == "Август" and day <= 22):
+    sign = "Лев"
+elif (month == "Август" and day >= 23) or (month == "Сентябрь" and day <= 22):
+    sign = "Дева"
+elif (month == "Сентябрь" and day >= 23) or (month == "Октябрь" and day <= 23):
+    sign = "Весы"
+elif (month == "Октябрь" and day >= 24) or (month == "Ноябрь" and day <= 22):
+    sign = "Скорпион"
+elif (month == "Ноябрь" and day >= 23) or (month == "Декабрь" and day <= 21):
+    sign = "Стрелец"
+elif (month == "Декабрь" and day >= 22) or (month == "Январь" and day <= 20):
+    sign = "Козерог"
+elif (month == "Январь" and day >= 21) or (month == "Февраль" and day <= 19):
+    sign = "Водолей"
+elif (month == "Февраль" and day >= 20) or (month == "Март" and day <= 20):
+    sign = "Рыбы"
+else:
+    sign = "не определен (проверьте корректность введенных данных)"
+
+# Выводим результат
+print(f"Ваш знак зодиака: {sign}")
+
+# Задание 3) Часть (2) 
+
+# Запрашиваем данные у пользователя
+day = int(input("Введите день:\n"))
+month = input("Введите месяц:\n").capitalize()
+
+# Определяем знак зодиака
+if (month == "Март" and day >= 21) or (month == "Апрель" and day <= 19):
+    sign = "Овен"
+elif (month == "Апрель" and day >= 20) or (month == "Май" and day <= 20):
+    sign = "Телец"
+elif (month == "Май" and day >= 21) or (month == "Июнь" and day <= 21):
+    sign = "Близнецы"
+elif (month == "Июнь" and day >= 22) or (month == "Июль" and day <= 22):
+    sign = "Рак"
+elif (month == "Июль" and day >= 23) or (month == "Август" and day <= 22):
+    sign = "Лев"
+elif (month == "Август" and day >= 23) or (month == "Сентябрь" and day <= 22):
+    sign = "Дева"
+elif (month == "Сентябрь" and day >= 23) or (month == "Октябрь" and day <= 23):
+    sign = "Весы"
+elif (month == "Октябрь" and day >= 24) or (month == "Ноябрь" and day <= 22):
+    sign = "Скорпион"
+elif (month == "Ноябрь" and day >= 23) or (month == "Декабрь" and day <= 21):
+    sign = "Стрелец"
+elif (month == "Декабрь" and day >= 22) or (month == "Январь" and day <= 20):
+    sign = "Козерог"
+elif (month == "Январь" and day >= 21) or (month == "Февраль" and day <= 18):
+    sign = "Водолей"
+elif (month == "Февраль" and day >= 19) or (month == "Март" and day <= 20):
+    sign = "Рыбы"
+else:
+    sign = "не определен (проверьте корректность введенных данных)"
+
+# Выводим результат
+print(f"Ваш знак зодиака: {sign}")
+
+# Задание 4)
+
+width = 15
+length = 55
+height = 15
+
+# Сначала проверяем самое приоритетное условие - упаковка для лыж (более 200 см)
+if width > 200 or length > 200 or height > 200:
+    print("Упаковка для лыж")
+# Затем проверяем коробку №1 (все размеры ≤ 15)
+elif width <= 15 and length <= 15 and height <= 15:
+    print("Коробка №1")
+# Затем проверяем коробку №2 (хотя бы одно измерение 16-49 см)
+elif (15 < width < 50) or (15 < length < 50) or (15 < height < 50):
+    print("Коробка №2")
+# Все остальные случаи - коробка №3
+else:
+    print("Коробка №3")
+
+# Задание 4) Часть (2) 
+
+width = 45
+length = 205
+height = 45
+
+# Приоритет 1: Упаковка для лыж (более 200 см)
+if width > 200 or length > 200 or height > 200:
+    print("Упаковка для лыж")
+# Приоритет 2: Коробка №1 (все размеры ≤ 15)
+elif width <= 15 and length <= 15 and height <= 15:
+    print("Коробка №1")
+# Приоритет 3: Коробка №2 (хотя бы одно измерение 16-49 см)
+elif (15 < width < 50) or (15 < length < 50) or (15 < height < 50):
+    print("Коробка №2")
+# Приоритет 4: Все остальное
+else:
+    print("Коробка №3")

@@ -30,7 +30,8 @@ girls = ['Kate', 'Liza', 'Kira', 'Emma', 'Trisha']
 
 if len(boys) != len(girls):
     print("Внимание, кто-то может остаться без пары!")
-else:
+
+if len(boys) == len(girls):
     sorted_boys = sorted(boys)
     sorted_girls = sorted(girls)
     print("Идеальные пары:")
@@ -41,17 +42,17 @@ else:
 
 # Задание 4
 
-countries_temperature = [
-    ['Таиланд', [75.2, 77, 78.8, 73.4, 68, 75.2, 77]],
-    ['Германия', [57.2, 55.4, 59, 59, 53.6]],
-    ['Россия', [35.6, 37.4, 39.2, 41, 42.8, 39.2, 35.6]],
-    ['Польша', [50, 50, 53.6, 57.2, 55.4, 55.4]]
+countries_temperature: list[list[str | list[float]]] = [
+    ["Таиланд", [75.2, 77, 78.8, 73.4, 68, 75.2, 77]],
+    ["Германия", [57.2, 55.4, 59, 59, 53.6]],
+    ["Россия", [35.6, 37.4, 39.2, 41, 42.8, 39.2, 35.6]],
+    ["Польша", [50, 50, 53.6, 57.2, 55.4, 55.4]],
 ]
 
 print("Средняя температура в странах:")
 
 for country, temps in countries_temperature:
-    celsius_temps = [(f - 32) * 5 / 9 for f in temps]
+    celsius_temps = [(float(f) - 32) * 5 / 9 for f in temps]
     avg_celsius = sum(celsius_temps) / len(celsius_temps)
     print(f"{country}  -  {avg_celsius:.1f} С")
 

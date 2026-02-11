@@ -1,0 +1,53 @@
+# Задание 1 
+
+import pandas as pd
+
+# Загружаем данные
+movies = pd.read_csv('movies.csv')
+ratings = pd.read_csv('ratings.csv')
+
+# Шаг 1: Оставляем только оценки со значением 5.0
+excellent_ratings = ratings[ratings['rating'] == 5.0]
+
+# Шаг 2: Группируем по movieId и считаем количество оценок 5.0 для каждого фильма
+top_movies = (
+    excellent_ratings
+    .groupby('movieId')
+    .size()  # .size() считает количество строк в каждой группе
+    .reset_index(name='count_5_star')
+)
+
+# Шаг 3: Сортируем по убыванию количества пятерок и берем первого победителя
+winner = top_movies.sort_values('count_5_star', ascending=False).iloc[0]
+
+# Шаг 4: Получаем информацию о фильме из датасета movies
+winner_info = movies[movies['movieId'] == winner['movieId']].iloc[0]
+
+# Выводим результат
+print("=" * 60)
+print("ФИЛЬМ С НАИБОЛЬШИМ КОЛИЧЕСТВОМ ОЦЕНОК 5.0")
+print("=" * 60)
+print(f"Название:          {winner_info['title']}")
+print(f"Жанры:             {winner_info['genres']}")
+print(f"Количество 5★:     {int(winner['count_5_star'])}")
+print(f"ID фильма:         {winner_info['movieId']}")
+print("=" * 60)
+
+# Задание 2
+
+import pandas as pd
+
+df = pd.read_csv('power.csv', low_memory=False)
+
+total = df[
+    df['country'].isin(['Latvia', 'Lithuania', 'Estonia']) &
+    df['year'].between(2005, 2010) &
+    df['category'].isin([4, 12, 21]) &
+    (df['quantity'] >= 0)
+]['quantity'].sum()
+
+print(f'Суммарное потребление: {total:.2f}')
+
+# Задание 3
+
+???

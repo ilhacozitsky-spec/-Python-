@@ -39,9 +39,9 @@ def validate_dates(stream: list[str]) -> list[bool]:
 
 # Задание 3
 
-def date_range(start_date: str, end_date: str) -> list[str]:
+def date_range(start_date: str, end_date: str) -> list[datetime]:
     """
-    Возвращает список дат за период от start_date до end_date в формате YYYY-MM-DD.
+    Возвращает список дат за период от start_date до end_date в виде объектов datetime.
     В случае неверного формата или при start_date > end_date возвращается пустой список.
     """
     try:
@@ -53,10 +53,10 @@ def date_range(start_date: str, end_date: str) -> list[str]:
     if start_dt > end_dt:
         return []
 
-    res: list[str] = []
+    res: list[datetime] = []
     current_dt = start_dt
     while current_dt <= end_dt:
-        res.append(current_dt.strftime(DATE_FORMAT))
+        res.append(current_dt)
         current_dt += timedelta(days=1)
 
     return res
